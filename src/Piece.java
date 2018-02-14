@@ -85,4 +85,18 @@ class Piece {
             that.getSide().win();
         }
     }
+
+    boolean isKilled() {
+        return isKilled;
+    }
+
+    public String toString() {
+        if (side == Side.RED) {
+            return animal.toString();
+        } else if (side == Side.BLACK) {
+            return animal.toString().toLowerCase();
+        } else {
+            return "";
+        }
+    }
 }

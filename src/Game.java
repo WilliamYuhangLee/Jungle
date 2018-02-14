@@ -59,7 +59,7 @@ class Game {
         while (!Side.RED.isVictorious() && !Side.BLACK.isVictorious()) {
             System.out.println(playersTurn + " turn:");
             System.out.println(board);
-            System.out.println("Please select an animal to move: (choose from ");
+            System.out.println("Please select an animal to move: (choose from" + playersTurn.printAlivePieces() + ")");
         }
     }
 }

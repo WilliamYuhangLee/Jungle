@@ -35,4 +35,14 @@ enum Side {
             return "";
         }
     }
+
+    String printAlivePieces() {
+        String str = "";
+        for (Piece piece : pieces) {
+            if (!piece.isKilled()) {
+                str += " " + piece;
+            }
+        }
+        return str;
+    }
 }

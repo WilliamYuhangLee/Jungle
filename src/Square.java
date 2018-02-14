@@ -100,12 +100,7 @@ class Square {
                 square += " ";
             }
         } else {
-            String animal = "" + this.piece.getAnimal();
-            if (this.piece.getSide() == Side.RED) {
-                square += animal;
-            } else {
-                square += animal.toLowerCase();
-            }
+            square += this.piece;
         }
         if (water) {
             square += "~";
