@@ -50,6 +50,7 @@ class Game {
 
     static void startGame() {
         Board board = Board.createBoard();
+        Side playersTurn = Side.RED;
         System.out.println(board);
     }
 }
