@@ -2,11 +2,23 @@ import org.apache.commons.text.WordUtils;
 
 class Game {
 
-    static void launchGame() {
+    static void launch() {
         startUp();
         gameIntro();
-        Board board = Board.createBoard();
-        System.out.println(board);
+        startGame();
+    }
+
+    static void startUp() {
+        System.out.println("===================================");
+        System.out.println("||    = =  = =  =  ==  =    ==== ||");
+        System.out.println("||    = =  = == = =  = =    =    ||");
+        System.out.println("||    = =  = == = =    =    ==== ||");
+        System.out.println("||    = =  = = == = == =    =    ||");
+        System.out.println("|| =  = =  = = == =  = =    =    ||");
+        System.out.println("||  ==   ==  =  =  ==  ==== ==== ||");
+        System.out.println("===================================");
+        System.out.println("||          Developed by         ||");
+        System.out.println("||     William Lee & Frank Lu    ||");
     }
 
     static void gameIntro() {
@@ -36,16 +48,8 @@ class Game {
         System.out.println("================================================================================");
     }
 
-    static void startUp() {
-        System.out.println("===================================");
-        System.out.println("||    = =  = =  =  ==  =    ==== ||");
-        System.out.println("||    = =  = == = =  = =    =    ||");
-        System.out.println("||    = =  = == = =    =    ==== ||");
-        System.out.println("||    = =  = = == = == =    =    ||");
-        System.out.println("|| =  = =  = = == =  = =    =    ||");
-        System.out.println("||  ==   ==  =  =  ==  ==== ==== ||");
-        System.out.println("===================================");
-        System.out.println("||          Developed by         ||");
-        System.out.println("||     William Lee & Frank Lu    ||");
+    static void startGame() {
+        Board board = Board.createBoard();
+        System.out.println(board);
     }
 }

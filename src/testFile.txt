@@ -1,0 +1,101 @@
+   A   B   C   D   E   F   G
+ +---+---+---+---+---+---+---+ 
+1| L |   |XXX| O |XXX|   | T |1
+ +---+---+---+---+---+---+---+ 
+2|   | D |   |XXX|   | C |   |2
+ +---+---+---+---+---+---+---+ 
+3| R |   | J |   | W |   | E |3
+ +---+---+---+---+---+---+---+ 
+4|   |~~~|~~~|   |~~~|~~~|   |4
+ +---+---+---+---+---+---+---+ 
+5|   |~~~|~~~|   |~~~|~~~|   |5
+ +---+---+---+---+---+---+---+ 
+6|   |~~~|~~~|   |~~~|~~~|   |6
+ +---+---+---+---+---+---+---+ 
+7| e |   | w |   | j |   | r |7
+ +---+---+---+---+---+---+---+ 
+8|   | c |   |XXX|   | d |   |8
+ +---+---+---+---+---+---+---+ 
+9| t |   |XXX| O |XXX|   | l |9
+ +---+---+---+---+---+---+---+ 
+   A   B   C   D   E   F   G   
+
+=================================
+=    = =  = =  =  ==  =    ==== =
+=    = =  = == = =  = =    =    =
+=    = =  = == = =    =    ==== =
+=    = =  = = == = == =    =    =
+= =  = =  = = == =  = =    =    =
+=  ==   ==  =  =  ==  ==== ==== =
+=================================
+=          Developed by         =
+=     William Lee & Frank Lu    =
+=================================
+===========================The following is printed out=========================
+===================================
+||    = =  = =  =  ==  =    ==== ||
+||    = =  = == = =  = =    =    ||
+||    = =  = == = =    =    ==== ||
+||    = =  = = == = == =    =    ||
+|| =  = =  = = == =  = =    =    ||
+||  ==   ==  =  =  ==  ==== ==== ||
+===================================
+||          Developed by         ||
+||     William Lee & Frank Lu    ||
+================================================================================
+                                  Introduction                                  
+================================================================================
+Welcome to the Jungle!
+Command your animals to capture all the other player's animals or their den
+(marked with "O") to win!
+Animals on the red side are marked with CAPITAL letters, and small letters on
+the black side.
+Starting from red, each turn a player can move one of their animals by one
+square horizontally or vertically (a special rule for Lions and Tigers will be
+explained later).
+Higher ranking animals can capture lower or identical ranking animals by moving
+into their square, except for Rats, which can capture Elephants and Elephants
+can't capture Rats.
+The animal ranking, from highest to lowest, along with their markers in the game
+is:
+Rank|Marker|Animal
+  8    E    Elephant
+  7    L    Lion
+  6    T    Tiger
+  5    J    Jaguar
+  4    W    Wolf
+  3    D    Dog
+  2    C    Cat
+  1    R    Rat
+There are three traps (marked with "XXX") placed next to each side's den. You
+can capture any enemy animals in your dens using any animals regardless of rank.
+Two areas of water (marked with "~~~") are located in the center of the board.
+Only Rats and Dogs may enter the water and engage other animals in the water.
+However, they can't enter a water square from land or a land square from water
+if there is another animal (of any side) on that square.
+Lions and Tigers may jump over the water horizontally or vertically, but they
+can't do so if there is any other animal on their path.
+Finally, animals may not move into their own den. If an enemy animal moves into
+the den, the player loses.
+================================================================================
+   A   B   C   D   E   F   G   
+ +---+---+---+---+---+---+---+ 
+1| L |   |XXX| O |XXX|   | T |1
+ +---+---+---+---+---+---+---+ 
+2|   | D |   |XXX|   | C |   |2
+ +---+---+---+---+---+---+---+ 
+3| R |   | J |   | W |   | E |3
+ +---+---+---+---+---+---+---+ 
+4|   |~~~|~~~|   |~~~|~~~|   |4
+ +---+---+---+---+---+---+---+ 
+5|   |~~~|~~~|   |~~~|~~~|   |5
+ +---+---+---+---+---+---+---+ 
+6|   |~~~|~~~|   |~~~|~~~|   |6
+ +---+---+---+---+---+---+---+ 
+7| e |   | w |   | j |   | r |7
+ +---+---+---+---+---+---+---+ 
+8|   | c |   |XXX|   | d |   |8
+ +---+---+---+---+---+---+---+ 
+9| t |   |XXX| O |XXX|   | l |9
+ +---+---+---+---+---+---+---+ 
+   A   B   C   D   E   F   G   
