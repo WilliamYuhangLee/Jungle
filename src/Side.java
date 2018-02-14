@@ -1,3 +1,3 @@
 enum Side {
-    RED, BLACK, NONE;
+    RED, BLACK, NONE
 }
