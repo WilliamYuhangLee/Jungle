@@ -2,6 +2,7 @@ class Board {
 
     private static boolean hasCreated = false;
     Square[][] squares;
+    Side[] sides;
 
     static Board createBoard() {
         if (!hasCreated) {
@@ -14,6 +15,7 @@ class Board {
 
     private Board() {
         squares = initBoard(this);
+        sides = new Side[] {Side.RED, Side.BLACK};
     }
 
     private static Square[][] initBoard(Board board) {

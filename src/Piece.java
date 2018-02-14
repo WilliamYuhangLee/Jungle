@@ -71,6 +71,9 @@ class Piece {
             }
             this.location = target;
             target.piece = this;
+            if (target.isDen() && target.getSide() != this.getSide()) {
+                this.getSide().win();
+            }
         }
     }
 
@@ -78,5 +81,8 @@ class Piece {
         this.location = null;
         this.isKilled = true;
         this.side.pieceKilled();
+        if (this.side.getCount() == 0) {
+            that.getSide().win();
+        }
     }
 }

@@ -1,4 +1,5 @@
 import org.apache.commons.text.WordUtils;
+import java.util.Scanner;
 
 class Game {
 
@@ -45,12 +46,20 @@ class Game {
         System.out.println(WordUtils.wrap("However, they can't enter a water square from land or a land square from water if there is another animal (of any side) on that square.", 80));
         System.out.println(WordUtils.wrap("Lions and Tigers may jump over the water horizontally or vertically, but they can't do so if there is any other animal on their path.", 80));
         System.out.println(WordUtils.wrap("Finally, animals may not move into their own den. If an enemy animal moves into the den, the player loses.", 80));
-        System.out.println("================================================================================");
+        //System.out.println("================================================================================");
     }
 
     static void startGame() {
+        System.out.println("================================================================================");
+        System.out.println("                                  Game Starts                                   ");
+        System.out.println("================================================================================");
         Board board = Board.createBoard();
         Side playersTurn = Side.RED;
-        System.out.println(board);
+        Scanner sc = new Scanner(System.in);
+        while (!Side.RED.isVictorious() && !Side.BLACK.isVictorious()) {
+            System.out.println(playersTurn + " turn:");
+            System.out.println(board);
+            System.out.println("Please select an animal to move: (choose from ");
+        }
     }
 }
