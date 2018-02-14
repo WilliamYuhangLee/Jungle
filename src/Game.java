@@ -1,14 +1,18 @@
 import org.apache.commons.text.WordUtils;
 
 class Game {
+
     static void launchGame() {
         startUp();
         gameIntro();
         Board board = Board.createBoard();
         System.out.println(board);
     }
+
     static void gameIntro() {
-        System.out.println();
+        System.out.println("================================================================================");
+        System.out.println("                                  Introduction                                  ");
+        System.out.println("================================================================================");
         System.out.println("Welcome to the Jungle!");
         System.out.println(WordUtils.wrap("Command your animals to capture all the other player's animals or their den (marked with \"O\") to win!",80));
         System.out.println(WordUtils.wrap("Animals on the red side are marked with CAPITAL letters, and small letters on the black side.",80));
@@ -29,18 +33,19 @@ class Game {
         System.out.println(WordUtils.wrap("However, they can't enter a water square from land or a land square from water if there is another animal (of any side) on that square.", 80));
         System.out.println(WordUtils.wrap("Lions and Tigers may jump over the water horizontally or vertically, but they can't do so if there is any other animal on their path.", 80));
         System.out.println(WordUtils.wrap("Finally, animals may not move into their own den. If an enemy animal moves into the den, the player loses.", 80));
+        System.out.println("================================================================================");
     }
+
     static void startUp() {
-        System.out.println("=================================");
-        System.out.println("=    = =  = =  =  ==  =    ==== =");
-        System.out.println("=    = =  = == = =  = =    =    =");
-        System.out.println("=    = =  = == = =    =    ==== =");
-        System.out.println("=    = =  = = == = == =    =    =");
-        System.out.println("= =  = =  = = == =  = =    =    =");
-        System.out.println("=  ==   ==  =  =  ==  ==== ==== =");
-        System.out.println("=================================");
-        System.out.println("=          Developed by         =");
-        System.out.println("=     William Lee & Frank Lu    =");
-        System.out.println("=================================");
+        System.out.println("===================================");
+        System.out.println("||    = =  = =  =  ==  =    ==== ||");
+        System.out.println("||    = =  = == = =  = =    =    ||");
+        System.out.println("||    = =  = == = =    =    ==== ||");
+        System.out.println("||    = =  = = == = == =    =    ||");
+        System.out.println("|| =  = =  = = == =  = =    =    ||");
+        System.out.println("||  ==   ==  =  =  ==  ==== ==== ||");
+        System.out.println("===================================");
+        System.out.println("||          Developed by         ||");
+        System.out.println("||     William Lee & Frank Lu    ||");
     }
 }
