@@ -66,20 +66,21 @@ class Game {
                 System.out.println("(choose from" + playersTurn.printAlivePieces() + ")");
                 System.out.print("Please select an animal to move: ");
                 if (sc.hasNextLine()) {
-                    chosenAnimal = sc.nextLine();
-                    if (chosenAnimal == "E" || chosenAnimal == "e" ||
-                            chosenAnimal == "L" || chosenAnimal == "l" ||
-                            chosenAnimal == "T" || chosenAnimal == "t" ||
-                            chosenAnimal == "J" || chosenAnimal == "j" ||
-                            chosenAnimal == "W" || chosenAnimal == "w" ||
-                            chosenAnimal == "D" || chosenAnimal == "d" ||
-                            chosenAnimal == "C" || chosenAnimal == "c" ||
-                            chosenAnimal == "R" || chosenAnimal == "r") {
-                        if (playersTurn == Side.RED && (chosenAnimal == "E" || chosenAnimal == "L" || chosenAnimal == "T" || chosenAnimal == "J" || chosenAnimal == "W" || chosenAnimal == "D" || chosenAnimal == "C" || chosenAnimal == "R")
-                                || playersTurn == Side.BLACK && (chosenAnimal == "e" || chosenAnimal == "l" || chosenAnimal == "t" || chosenAnimal == "j" || chosenAnimal == "w" || chosenAnimal == "d" || chosenAnimal == "c" || chosenAnimal == "r")) {
+                    chosenAnimal = sc.nextLine().replace("\n", "");
+                    System.out.println("This is the entered string: " + chosenAnimal);//for debug only
+                    if (chosenAnimal.equals("E") || chosenAnimal.equals("e") ||
+                            chosenAnimal.equals("L") || chosenAnimal.equals("l") ||
+                            chosenAnimal.equals("T") || chosenAnimal.equals("t") ||
+                            chosenAnimal.equals("J") || chosenAnimal.equals("j") ||
+                            chosenAnimal.equals("W") || chosenAnimal.equals("w") ||
+                            chosenAnimal.equals("D") || chosenAnimal.equals("d") ||
+                            chosenAnimal.equals("C") || chosenAnimal.equals("c") ||
+                            chosenAnimal.equals("R") || chosenAnimal.equals("r")) {
+                        if (playersTurn == Side.RED && (chosenAnimal.equals("E") || chosenAnimal.equals("L") || chosenAnimal.equals("T") || chosenAnimal.equals("J") || chosenAnimal.equals("W") || chosenAnimal.equals("D") || chosenAnimal.equals("C") || chosenAnimal.equals("R"))
+                                || playersTurn == Side.BLACK && (chosenAnimal.equals("e") || chosenAnimal.equals("l") || chosenAnimal.equals("t") || chosenAnimal.equals("j") || chosenAnimal.equals("w") || chosenAnimal.equals("d") || chosenAnimal.equals("c") || chosenAnimal.equals("r"))) {
                             boolean foundAnimalAlive = false;
                             for (int i = 0; i < playersTurn.alivePieces.size(); i++) {
-                                if (chosenAnimal == playersTurn.alivePieces.get(i).toString()) {
+                                if (chosenAnimal.equals(playersTurn.alivePieces.get(i).toString())) {
                                     foundAnimalAlive = true;
                                     chosenPiece = playersTurn.alivePieces.get(i);
                                     break;
