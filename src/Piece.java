@@ -48,7 +48,7 @@ class Piece {
             int y1 = target.getCol();
             int dx = Math.abs(x0 - x1);
             int dy = Math.abs(y0 - y1);
-            if (!(dx == 0 || dx == 4) || !(dy == 0 || dy == 3)) { // needs debug here.
+            if (!(dx == 0 && dy == 4) && !(dy == 0 && dx == 3))  { // needs debug here.
                 temp = false;
             } else {
                 for (int i = Math.min(x0, x1); i <= Math.max(x0, x1); i++) {
