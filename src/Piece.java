@@ -211,11 +211,11 @@ class Piece {
         return isKilled;
     }
 
-    public String toString() {
+    String print() {
         if (side == Side.RED) {
-            return animal.toString();
+            return animal.print();
         } else if (side == Side.BLACK) {
-            return animal.toString().toLowerCase();
+            return animal.print().toLowerCase();
         } else {
             return "";
         }

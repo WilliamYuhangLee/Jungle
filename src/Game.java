@@ -10,7 +10,7 @@ class Game {
         startGame();
     }
 
-    static void startUp() {
+    private static void startUp() {
         System.out.println("===================================");
         System.out.println("||    = =  = =  =  ==  =    ==== ||");
         System.out.println("||    = =  = == = =  = =    =    ||");
@@ -23,7 +23,7 @@ class Game {
         System.out.println("||     William Lee & Frank Lu    ||");
     }
 
-    static void gameIntro() {
+    private static void gameIntro() {
         System.out.println("================================================================================");
         System.out.println("                                  Introduction                                  ");
         System.out.println("================================================================================");
@@ -50,7 +50,7 @@ class Game {
         //System.out.println("================================================================================");
     }
 
-    static void startGame() {
+    private static void startGame() {
         System.out.println("================================================================================");
         System.out.println("                                  Game Starts                                   ");
         System.out.println("================================================================================");
@@ -59,7 +59,7 @@ class Game {
         Scanner sc = new Scanner(System.in);
         while (!Side.RED.isVictorious() && !Side.BLACK.isVictorious()) {
             System.out.println(playersTurn + " turn:");
-            System.out.println(board);
+            System.out.println(board.print());
             boolean validAnimal = false;
             String chosenAnimal;
             Piece chosenPiece = null;
@@ -79,7 +79,7 @@ class Game {
                             || playersTurn == Side.BLACK && (chosenAnimal.equals("e") || chosenAnimal.equals("l") || chosenAnimal.equals("t") || chosenAnimal.equals("j") || chosenAnimal.equals("w") || chosenAnimal.equals("d") || chosenAnimal.equals("c") || chosenAnimal.equals("r"))) {
                         boolean foundAnimalAlive = false;
                         for (int i = 0; i < playersTurn.alivePieces.size(); i++) {
-                            if (chosenAnimal.equals(playersTurn.alivePieces.get(i).toString())) {
+                            if (chosenAnimal.equals(playersTurn.alivePieces.get(i).print())) {
                                 foundAnimalAlive = true;
                                 chosenPiece = playersTurn.alivePieces.get(i);
                                 break;
@@ -101,7 +101,7 @@ class Game {
                     System.out.println("Please choose a valid animal marker from the list below!");
                 }
             }
-            System.out.println("The chosen animal is " + chosenPiece); //placeholder for more codes.
+            System.out.println("The chosen animal is " + chosenPiece.print()); //placeholder for more codes.
         }
     }
 }

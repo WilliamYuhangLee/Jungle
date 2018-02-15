@@ -80,7 +80,7 @@ class Square {
         return this.piece != null;
     }
 
-    public String toString() {
+    String print() {
         String square = "";
         if (water) {
             square += "~";
@@ -100,7 +100,7 @@ class Square {
                 square += " ";
             }
         } else {
-            square += this.piece;
+            square += this.piece.print();
         }
         if (water) {
             square += "~";

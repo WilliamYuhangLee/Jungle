@@ -22,7 +22,7 @@ enum Animal {
         } else return false;
     }
 
-    public String toString() {
+    String print() {
         if (rank == 1) {
             return "R";
         } else if (rank == 2) {
@@ -37,8 +37,32 @@ enum Animal {
             return "T";
         } else if (rank == 7) {
             return "L";
-        } else {
+        } else if (rank == 8){
             return "E";
+        } else {
+            return "";
+        }
+    }
+
+    public String toString() {
+        if (rank == 1) {
+            return "Rat";
+        } else if (rank == 2) {
+            return "Cat";
+        } else if (rank == 3) {
+            return "Dog";
+        } else if (rank == 4) {
+            return "Wolf";
+        } else if (rank == 5) {
+            return "Jaguar";
+        } else if (rank == 6) {
+            return "Tiger";
+        } else if (rank == 7) {
+            return "Lion";
+        } else if (rank == 8){
+            return "Elephant";
+        } else {
+            return "null";
         }
     }
 }

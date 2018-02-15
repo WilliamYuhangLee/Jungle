@@ -46,7 +46,7 @@ enum Side {
         String str = "";
         for (Piece piece : pieces) {
             if (!piece.isKilled()) {
-                str += " \"" + piece + "\"";
+                str += " \"" + piece.print() + "\"";
             }
         }
         return str;

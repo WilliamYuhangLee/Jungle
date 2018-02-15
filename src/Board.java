@@ -61,14 +61,14 @@ class Board {
         return squares;
     }
 
-    public String toString() {
+    String print() {
         String header = "   A   B   C   D   E   F   G   \n";
         String line = " +---+---+---+---+---+---+---+ \n";
         String board = header + line;
         for (int i = 0; i < squares.length; i++) {
             board += (i + 1) + "|";
             for (int j = 0; j < squares[i].length; j++) {
-                board += squares[i][j] + "|";
+                board += squares[i][j].print() + "|";
             }
             board += (i + 1) + "\n" + line;
         }
