@@ -59,7 +59,52 @@ class Game {
         while (!Side.RED.isVictorious() && !Side.BLACK.isVictorious()) {
             System.out.println(playersTurn + " turn:");
             System.out.println(board);
-            System.out.println("Please select an animal to move: (choose from" + playersTurn.printAlivePieces() + ")");
+            boolean validAnimal = false;
+            String chosenAnimal;
+            Piece chosenPiece = null;
+            while (!validAnimal) {
+                System.out.println("(choose from" + playersTurn.printAlivePieces() + ")");
+                System.out.print("Please select an animal to move: ");
+                if (sc.hasNextLine()) {
+                    chosenAnimal = sc.nextLine();
+                    if (chosenAnimal == "E" || chosenAnimal == "e" ||
+                            chosenAnimal == "L" || chosenAnimal == "l" ||
+                            chosenAnimal == "T" || chosenAnimal == "t" ||
+                            chosenAnimal == "J" || chosenAnimal == "j" ||
+                            chosenAnimal == "W" || chosenAnimal == "w" ||
+                            chosenAnimal == "D" || chosenAnimal == "d" ||
+                            chosenAnimal == "C" || chosenAnimal == "c" ||
+                            chosenAnimal == "R" || chosenAnimal == "r") {
+                        if (playersTurn == Side.RED && (chosenAnimal == "E" || chosenAnimal == "L" || chosenAnimal == "T" || chosenAnimal == "J" || chosenAnimal == "W" || chosenAnimal == "D" || chosenAnimal == "C" || chosenAnimal == "R")
+                                || playersTurn == Side.BLACK && (chosenAnimal == "e" || chosenAnimal == "l" || chosenAnimal == "t" || chosenAnimal == "j" || chosenAnimal == "w" || chosenAnimal == "d" || chosenAnimal == "c" || chosenAnimal == "r")) {
+                            boolean foundAnimalAlive = false;
+                            for (int i = 0; i < playersTurn.alivePieces.size(); i++) {
+                                if (chosenAnimal == playersTurn.alivePieces.get(i).toString()) {
+                                    foundAnimalAlive = true;
+                                    chosenPiece = playersTurn.alivePieces.get(i);
+                                    break;
+                                }
+                            }
+                            if (foundAnimalAlive) {
+                                if (chosenPiece.canMove()) {
+                                    validAnimal = true;
+                                } else {
+                                    System.out.println("The animal you have chosen can not move to any square. Please select another one.");
+                                }
+                            } else {
+                                System.out.println("You can only select an animal that hasn't been captured!");
+                            }
+                        } else {
+                            System.out.println("You can only select one of YOUR animals!");
+                        }
+                    } else {
+                        System.out.println("Please choose a valid animal marker from the list below!");
+                    }
+                } else {
+                    System.out.println("Please enter the marker of an animal you want to move!");
+                }
+            }
+            System.out.println("The chosen animal is " + chosenPiece); //placeholder for more codes.
         }
     }
 }

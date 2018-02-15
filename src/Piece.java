@@ -63,6 +63,20 @@ class Piece {
         return temp;
     }
 
+    boolean canMove() {
+        boolean canMove = false;
+        rowLoop:
+        for (Square[] row: this.location.board.squares) {
+            for (Square square: row) {
+                if (this.canMoveTo(square)) {
+                    canMove = true;
+                    break rowLoop;
+                }
+            }
+        }
+        return canMove;
+    }
+
     void moveTo(Square target) {
         if (this.canMoveTo(target)) {
             this.location.piece = null;
@@ -80,7 +94,7 @@ class Piece {
     void killedBy(Piece that) {
         this.location = null;
         this.isKilled = true;
-        this.side.pieceKilled();
+        this.side.pieceKilled(this);
         if (this.side.getCount() == 0) {
             that.getSide().win();
         }

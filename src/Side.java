@@ -1,17 +1,23 @@
+import java.util.ArrayList;
+
 enum Side {
     RED, BLACK, NONE;
 
     private boolean isVictorious = false;
     Piece[] pieces = new Piece[8];
+    ArrayList<Piece> alivePieces = new ArrayList<Piece>();
     private int count = 0;
 
     void addPiece(Piece piece) {
         pieces[count] = piece;
+        alivePieces.add(piece);
         count++;
     }
 
-    void pieceKilled() {
+    void pieceKilled(Piece piece) {
         count--;
+        alivePieces.remove(piece);
+        alivePieces.trimToSize();
     }
 
     void win() {
@@ -40,7 +46,7 @@ enum Side {
         String str = "";
         for (Piece piece : pieces) {
             if (!piece.isKilled()) {
-                str += " " + piece;
+                str += " \"" + piece + "\"";
             }
         }
         return str;
