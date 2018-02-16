@@ -201,7 +201,7 @@ class Piece {
             this.location = target;
             target.piece = this;
             if (target.isTrap() && target.getSide() != this.side) {
-                System.out.println("Caution! " + this.side + this.animal + " is only one step from " + target.getSide() + " den!");
+                System.out.println("Caution! " + this.side + " " + this.animal + " is only one step from " + target.getSide() + " den!");
             }
             if (target.isDen() && target.getSide() != this.side) {
                 this.side.win();
