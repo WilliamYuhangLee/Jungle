@@ -58,22 +58,6 @@ class Board {
         squares[6][4] = new Square(6, 4, new Piece(Animal.JAGUAR, Side.BLACK), board);
         squares[6][2] = new Square(6, 2, new Piece(Animal.WOLF, Side.BLACK), board);
         squares[6][0] = new Square(6, 0, new Piece(Animal.ELEPHANT, Side.BLACK), board);
-//        squares[0][0] = new Square(0, 0, new Piece(Animal.LION, Side.RED, squares[0][0]), board);
-//        squares[0][6] = new Square(0, 6, new Piece(Animal.TIGER, Side.RED, squares[0][6]), board);
-//        squares[1][1] = new Square(1, 1, new Piece(Animal.DOG, Side.RED, squares[1][1]), board);
-//        squares[1][5] = new Square(1, 5, new Piece(Animal.CAT, Side.RED, squares[1][5]), board);
-//        squares[2][0] = new Square(2, 0, new Piece(Animal.RAT, Side.RED, squares[2][0]), board);
-//        squares[2][2] = new Square(2, 2, new Piece(Animal.JAGUAR, Side.RED, squares[2][2]), board);
-//        squares[2][4] = new Square(2, 4, new Piece(Animal.WOLF, Side.RED, squares[2][4]), board);
-//        squares[2][6] = new Square(2, 6, new Piece(Animal.ELEPHANT, Side.RED, squares[2][6]), board);
-//        squares[8][6] = new Square(8, 6, new Piece(Animal.LION, Side.BLACK, squares[8][6]), board);
-//        squares[8][0] = new Square(8, 0, new Piece(Animal.TIGER, Side.BLACK, squares[8][0]), board);
-//        squares[7][5] = new Square(7, 5, new Piece(Animal.DOG, Side.BLACK, squares[7][5]), board);
-//        squares[7][1] = new Square(7, 1, new Piece(Animal.CAT, Side.BLACK, squares[7][1]), board);
-//        squares[6][6] = new Square(6, 6, new Piece(Animal.RAT, Side.BLACK, squares[6][6]), board);
-//        squares[6][4] = new Square(6, 4, new Piece(Animal.JAGUAR, Side.BLACK, squares[6][4]), board);
-//        squares[6][2] = new Square(6, 2, new Piece(Animal.WOLF, Side.BLACK, squares[6][2]), board);
-//        squares[6][0] = new Square(6, 0, new Piece(Animal.ELEPHANT, Side.BLACK, squares[6][0]), board);
         return squares;
     }
 

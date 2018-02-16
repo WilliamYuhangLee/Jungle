@@ -52,7 +52,7 @@ class Game {
 
     private static void startGame() {
         System.out.println("================================================================================");
-        System.out.println("                                  Game Starts                                   ");
+        System.out.println("                                  GAME STARTS                                   ");
         System.out.println("================================================================================");
         Board board = Board.createBoard();
         Side playersTurn = Side.RED;
@@ -64,7 +64,7 @@ class Game {
             boolean turnFinished = false;
             Turn:
             while (!turnFinished) {
-                System.out.println(board.print());
+                System.out.print(board.print());
                 boolean validAnimal = false;
                 String chosenAnimal;
                 Piece chosenPiece = null;
@@ -106,12 +106,12 @@ class Game {
                         System.out.println("Please choose a valid animal marker from the list below!");
                     }
                 }
-                System.out.println("You have selected your " + chosenPiece.getAnimal() + " at " + chosenPiece.location.printCoordinates());
+                System.out.println("You have selected your " + chosenPiece.getAnimal() + " at " + chosenPiece.location.printCoordinates() + ".");
                 Square target = null;
                 Targeting:
                 while (true) {
                     System.out.println("(Choose from" + chosenPiece.printAccessibleSquares() + ")");
-                    System.out.println("(If you want to select another animal, type \"reselect\"");
+                    System.out.println("(If you want to select another animal, type \"reselect\")");
                     System.out.print("Please enter the coordinates of a square that you want it to move to: ");
                     String chosenCoordinates = sc.nextLine();
                     if (chosenCoordinates.equals("reselect")) {
@@ -135,5 +135,8 @@ class Game {
                 }
             }
         }
+        System.out.println("================================================================================");
+        System.out.println("                                   GAME OVER                                    ");
+        System.out.println("================================================================================");
     }
 }

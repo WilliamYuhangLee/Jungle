@@ -135,9 +135,15 @@ class Piece {
             //5.1 if our piece is a Lion or a Tiger: from bank to bank?
             if (this.location.isBank() && target.isBank()) {
                 //5.1.1 from bank to bank: jumping straight over river?
-                if (dx == 4 && dy == 0 || dx == 0 && dy == 3) {
-                    //5.1.1.1 jumping straight over river
-                    ; // no effect
+                if (dx == 4 && dy == 0 || dx == 0 && dy == 3 && x0 != 2 && x0 != 6) {
+                    //5.1.1.1 jumping straight over river: is there a Rat or Dog on the path?
+                    for (int i = Math.min(x0, x1); i < Math.max(x0, x1); i++) {
+                        for (int j = Math.min(y0, y1); j < Math.max(y0 ,y1); j++) {
+                            if (target.board.squares[i][j].isWater() && target.board.squares[i][j].hasPiece()) {
+                                return false;
+                            }
+                        }
+                    }
                 } else {
                     //5.1.1.2 not jumping straight over river: moving to an adjacent square?
                     if (movingToAdjacentSquare) {
@@ -187,15 +193,19 @@ class Piece {
 
     void moveTo(Square target) {
         if (this.canMoveTo(target)) {
-            System.out.println(this.side + " " + this.animal + " has moved to " + target.printCoordinates());
+            System.out.println(this.side + " " + this.animal + " has moved to " + target.printCoordinates() + ".");
             this.location.piece = null;
             if (target.hasPiece() && target.piece.side != this.side) {
                 target.piece.killedBy(this);
             }
             this.location = target;
             target.piece = this;
+            if (target.isTrap() && target.getSide() != this.side) {
+                System.out.println("Caution! " + this.side + this.animal + " is only one step from " + target.getSide() + " den!");
+            }
             if (target.isDen() && target.getSide() != this.side) {
                 this.side.win();
+                System.out.println(this.side + " has won by capturing " + target.getSide() + " den!");
             }
         }
     }
