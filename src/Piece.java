@@ -6,13 +6,12 @@ class Piece {
     Square location;
     private boolean isKilled = false;
 
-    Piece(Animal animal, Side side, Square location) {
+    Piece(Animal animal, Side side) {
         this.animal = animal;
         if (side == Side.RED || side == Side.BLACK) {
             this.side = side;
             this.side.addPiece(this);
         }
-        this.location = location;
     }
 
     Animal getAnimal() {

@@ -5,7 +5,7 @@ class Square {
     private boolean den = false;
     private boolean trap = false;
     private Side side = Side.NONE;
-    Piece piece = null;
+    Piece piece;
     Board board;
 
     Square(int row, int col, boolean water, boolean den, boolean trap, Side side, Piece piece, Board board) {
@@ -20,10 +20,12 @@ class Square {
         } else if (trap) {
             this.trap = trap;
             this.side = side;
-        } else {
+        } else if (piece != null){
             this.piece = piece;
+            this.piece.location = this;
         }
     }
+
     Square(int row, int col, Board board) {
         this(row, col, false, board);
     }
