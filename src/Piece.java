@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 class Piece {
     private Animal animal;
     private Side side;
@@ -186,19 +188,41 @@ class Piece {
 
     void moveTo(Square target) {
         if (this.canMoveTo(target)) {
+            System.out.println(this.side + " " + this.animal + " has moved to " + target.printCoordinates());
             this.location.piece = null;
             if (target.hasPiece() && target.piece.side != this.side) {
                 target.piece.killedBy(this);
             }
             this.location = target;
             target.piece = this;
-            if (target.isDen() && target.getSide() != this.getSide()) {
-                this.getSide().win();
+            if (target.isDen() && target.getSide() != this.side) {
+                this.side.win();
             }
         }
     }
 
+    Square[] accessibleSquares() {
+        ArrayList<Square> accessibleSquares = new ArrayList<>();
+        for (Square[] row: this.location.board.squares) {
+            for (Square square: row) {
+                if (this.canMoveTo(square)) {
+                    accessibleSquares.add(square);
+                }
+            }
+        }
+        return accessibleSquares.toArray(new Square[accessibleSquares.size()]);
+    }
+
+    String printAccessibleSquares() {
+        String str = "";
+        for (Square square: this.accessibleSquares()) {
+            str += " \"" +  square.printCoordinates() + "\"";
+        }
+        return str;
+    }
+
     void killedBy(Piece that) {
+        System.out.println(this.side + " " + this.animal + " at " + this.location.printCoordinates() + " has been captured!");
         this.location = null;
         this.isKilled = true;
         this.side.pieceKilled(this);

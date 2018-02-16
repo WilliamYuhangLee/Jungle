@@ -111,4 +111,11 @@ class Square {
         }
         return square;
     }
+
+    String printCoordinates() {
+        String coords = "";
+        coords += (char) (65 + col);
+        coords += row + 1;
+        return coords;
+    }
 }
