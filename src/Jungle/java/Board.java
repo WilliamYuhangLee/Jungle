@@ -1,3 +1,5 @@
+package Jungle.java;
+
 class Board {
 
     private static boolean hasCreated = false;

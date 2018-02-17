@@ -1,3 +1,5 @@
+package Jungle.java;
+
 class Square {
     private int row;
     private int col;

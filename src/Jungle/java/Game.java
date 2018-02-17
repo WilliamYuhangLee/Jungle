@@ -1,3 +1,5 @@
+package Jungle.java;
+
 import org.apache.commons.text.WordUtils;
 
 import java.util.Scanner;
@@ -27,13 +29,13 @@ class Game {
         System.out.println("================================================================================");
         System.out.println("                                  Introduction                                  ");
         System.out.println("================================================================================");
-        System.out.println("Welcome to the Jungle!");
+        System.out.println("Welcome to the Jungle.java.Jungle!");
         System.out.println(WordUtils.wrap("Command your animals to capture all the other player's animals or their den (marked with \"O\") to win!", 80));
         System.out.println(WordUtils.wrap("Animals on the red side are marked with CAPITAL letters, and small letters on the black side.", 80));
         System.out.println(WordUtils.wrap("Starting from red, each turn a player can move one of their animals by one square horizontally or vertically (a special rule for Lions and Tigers will be explained later).", 80));
         System.out.println(WordUtils.wrap("Higher ranking animals can capture lower or identical ranking animals by moving into their square, except for Rats, which can capture Elephants and Elephants can't capture Rats.", 80));
         System.out.println(WordUtils.wrap("The animal ranking, from highest to lowest, along with their markers in the game is:", 80));
-        System.out.println("Rank|Marker|Animal");
+        System.out.println("Rank|Marker|Jungle.java.Animal");
         System.out.println("  8    E    Elephant");
         System.out.println("  7    L    Lion");
         System.out.println("  6    T    Tiger");

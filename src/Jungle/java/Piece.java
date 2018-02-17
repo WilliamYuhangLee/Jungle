@@ -1,3 +1,5 @@
+package Jungle.java;
+
 import java.util.ArrayList;
 
 class Piece {
@@ -23,7 +25,7 @@ class Piece {
     }
 
 /* bug fixing, replaced by a new one below
-    boolean canMoveTo(Square target) {
+    boolean canMoveTo(Jungle.java.Square target) {
         boolean temp = true;
         if (this.location.isSame(target)) {
             temp = false;
@@ -33,13 +35,13 @@ class Piece {
             temp = false;
         } else if (target.hasPiece() && !this.animal.canBeat(target.piece.animal) && (!target.isTrap() || target.getSide() != this.side)) {
             temp = false;
-        } else if (this.animal != Animal.RAT && this.animal != Animal.DOG && target.isWater()) {
+        } else if (this.animal != Jungle.java.Animal.RAT && this.animal != Jungle.java.Animal.DOG && target.isWater()) {
             temp = false;
-        } else if ((this.animal == Animal.RAT || this.animal == Animal.DOG) && (this.location.isWater() != target.isWater()) && target.hasPiece()) {
+        } else if ((this.animal == Jungle.java.Animal.RAT || this.animal == Jungle.java.Animal.DOG) && (this.location.isWater() != target.isWater()) && target.hasPiece()) {
             temp = false;
-        } else if (this.animal != Animal.TIGER && this.animal != Animal.LION && !this.location.isAdjacent(target)) {
+        } else if (this.animal != Jungle.java.Animal.TIGER && this.animal != Jungle.java.Animal.LION && !this.location.isAdjacent(target)) {
             temp = false;
-        } else if ((this.animal == Animal.TIGER || this.animal == Animal.LION) && !this.location.isAdjacent(target) && !(this.location.isBank() && target.isBank())) {
+        } else if ((this.animal == Jungle.java.Animal.TIGER || this.animal == Jungle.java.Animal.LION) && !this.location.isAdjacent(target) && !(this.location.isBank() && target.isBank())) {
             temp = false;
         } else if (this.location.getRow() != target.getRow() && this.location.getCol() != target.getCol()) {
             temp = false;

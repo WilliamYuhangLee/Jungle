@@ -1,3 +1,5 @@
+package Jungle.java;
+
 import java.util.ArrayList;
 
 enum Side {
