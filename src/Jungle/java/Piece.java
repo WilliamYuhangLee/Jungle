@@ -24,50 +24,6 @@ class Piece {
         return side;
     }
 
-/* bug fixing, replaced by a new one below
-    boolean canMoveTo(Jungle.java.Square target) {
-        boolean temp = true;
-        if (this.location.isSame(target)) {
-            temp = false;
-        } else if (target.isDen() && this.side == target.getSide()) {
-            temp = false;
-        } else if (target.hasPiece() && target.piece.side == this.side) {
-            temp = false;
-        } else if (target.hasPiece() && !this.animal.canBeat(target.piece.animal) && (!target.isTrap() || target.getSide() != this.side)) {
-            temp = false;
-        } else if (this.animal != Jungle.java.Animal.RAT && this.animal != Jungle.java.Animal.DOG && target.isWater()) {
-            temp = false;
-        } else if ((this.animal == Jungle.java.Animal.RAT || this.animal == Jungle.java.Animal.DOG) && (this.location.isWater() != target.isWater()) && target.hasPiece()) {
-            temp = false;
-        } else if (this.animal != Jungle.java.Animal.TIGER && this.animal != Jungle.java.Animal.LION && !this.location.isAdjacent(target)) {
-            temp = false;
-        } else if ((this.animal == Jungle.java.Animal.TIGER || this.animal == Jungle.java.Animal.LION) && !this.location.isAdjacent(target) && !(this.location.isBank() && target.isBank())) {
-            temp = false;
-        } else if (this.location.getRow() != target.getRow() && this.location.getCol() != target.getCol()) {
-            temp = false;
-        } else {
-            int x0 = this.location.getRow();
-            int x1 = target.getRow();
-            int y0 = this.location.getCol();
-            int y1 = target.getCol();
-            int dx = Math.abs(x0 - x1);
-            int dy = Math.abs(y0 - y1);
-            if (!(dx == 0 && dy == 4) && !(dy == 0 && dx == 3))  { // needs debug here.
-                temp = false;
-            } else {
-                for (int i = Math.min(x0, x1); i <= Math.max(x0, x1); i++) {
-                    for (int j = Math.min(y0, y1); j <= Math.min(y0, y1); j++) {
-                        if (this.location.board.squares[i][j].hasPiece()) {
-                            temp = false;
-                        }
-                    }
-                }
-            }
-        }
-        return temp;
-    }
-*/
-
     boolean canMoveTo(Square target) { // new canMoveTo() method
         if (this.location.isSame(target)) {
             //1. if same square, can't move
@@ -139,8 +95,8 @@ class Piece {
                 //5.1.1 from bank to bank: jumping straight over river?
                 if (dx == 4 && dy == 0 || dx == 0 && dy == 3 && x0 != 2 && x0 != 6) {
                     //5.1.1.1 jumping straight over river: is there a Rat or Dog on the path?
-                    for (int i = Math.min(x0, x1); i < Math.max(x0, x1); i++) {
-                        for (int j = Math.min(y0, y1); j < Math.max(y0 ,y1); j++) {
+                    for (int i = Math.min(x0, x1); i <= Math.max(x0, x1); i++) {
+                        for (int j = Math.min(y0, y1); j <= Math.max(y0 ,y1); j++) {
                             if (target.board.squares[i][j].isWater() && target.board.squares[i][j].hasPiece()) {
                                 return false;
                             }
