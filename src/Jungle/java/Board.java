@@ -1,5 +1,23 @@
 package Jungle.java;
 
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
+
+import static Jungle.java.Utils.*;
+
+
+import static org.lwjgl.opengl.GL11.GL_FLOAT;
+import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
+import static org.lwjgl.opengl.GL11.glDrawArrays;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
+import static org.lwjgl.opengl.GL20.glGetAttribLocation;
+import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
+
 class Board {
 
     private static boolean hasCreated = false;
@@ -18,6 +36,7 @@ class Board {
     private Board() {
         squares = initBoard(this);
         sides = new Side[] {Side.RED, Side.BLACK};
+        initGL();
     }
 
     private static Square[][] initBoard(Board board) {
@@ -77,4 +96,53 @@ class Board {
         board += header;
         return board;
     }
+
+
+    // GUI Stuff by frank
+    public int VAO,VBO,vertexCount,vPos_location,texCoords_location;
+    public Shader shader = new Shader("Board_vs.glsl", "Board_fs.glsl");
+    public Texture2D texture = new Texture2D("jungle_board.jpg");
+    void initGL(){
+        float[] vertices = {
+                -1f, 1f, 0f,  0f,1f,
+                -1f, -1f, 0f, 0f,0f,
+                1f, -1f, 0f,  1f,0f,
+
+                1f, -1f, 0f,   1f,0f,
+                1f, 1f, 0f,     1f,1f,
+                -1f, 1f, 0f,  0f,1f
+        };
+        FloatBuffer verticesBuffer = BufferUtils.createFloatBuffer(vertices.length);
+        verticesBuffer.put(vertices);
+        verticesBuffer.flip();
+
+        vertexCount = 6;
+        vPos_location=glGetAttribLocation(shader.Program,"vPos");
+        texCoords_location=glGetAttribLocation(shader.Program,"texCoords");
+
+
+        VAO = glGenVertexArrays();
+        glBindVertexArray(VAO);
+
+        VBO = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
+        glVertexAttribPointer(vPos_location, 3, GL_FLOAT, false, SIZE_OF_FLOAT*5, 0);
+        glEnableVertexAttribArray(vPos_location);
+        glVertexAttribPointer(texCoords_location, 2, GL_FLOAT, false, SIZE_OF_FLOAT*5, SIZE_OF_FLOAT*3);
+        glEnableVertexAttribArray(texCoords_location);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+
+        glBindVertexArray(0);
+    }
+
+    public void draw(){
+        shader.Use();
+        glBindVertexArray(VAO);
+        texture.bind();
+        glDrawArrays(GL_TRIANGLES,0,vertexCount);
+        glBindVertexArray(0);
+    }
+
 }

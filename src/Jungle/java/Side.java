@@ -44,6 +44,16 @@ enum Side {
         }
     }
 
+    public String toString2() {
+        if (this == RED) {
+            return "Red";
+        } else if (this == BLACK) {
+            return "blue";
+        } else {
+            return "";
+        }
+    }
+
     String printAlivePieces() {
         String str = "";
         for (Piece piece : pieces) {

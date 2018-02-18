@@ -1,19 +1,34 @@
 package Jungle.java;
 
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import static Jungle.java.Utils.SIZE_OF_FLOAT;
+import static org.lwjgl.opengl.GL11.GL_FLOAT;
+import static org.lwjgl.opengl.GL11.GL_TRIANGLES;
+import static org.lwjgl.opengl.GL11.glDrawArrays;
+import static org.lwjgl.opengl.GL15.*;
+import static org.lwjgl.opengl.GL15.GL_ARRAY_BUFFER;
+import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 class Piece {
     private Animal animal;
     private Side side;
     Square location;
     private boolean isKilled = false;
-
+    //static HashMap<String,Texture2D> animalTextures=new HashMap<>();
     Piece(Animal animal, Side side) {
         this.animal = animal;
         if (side == Side.RED || side == Side.BLACK) {
             this.side = side;
             this.side.addPiece(this);
         }
+        initGL();
     }
 
     Animal getAnimal() {
@@ -211,4 +226,73 @@ class Piece {
             return "";
         }
     }
+
+
+
+
+    // GUI Stuff by frank
+    public int VAO,VBO,vertexCount,vPos_location,texCoords_location,positionShift_location;
+    public  static Shader shader = null;
+    public Texture2D texture=null;
+    void initGL(){
+
+        if (shader==null)shader =new Shader("Piece_vs.glsl", "Piece_fs.glsl");
+        vPos_location=glGetAttribLocation(shader.Program,"vPos");
+        texCoords_location=glGetAttribLocation(shader.Program,"texCoords");
+        positionShift_location = glGetUniformLocation(shader.Program,"positionShift");
+
+        String thisPieceName = (this.animal.toString()+"_"+this.side.toString2()).toLowerCase();
+        texture= new Texture2D(thisPieceName+".png");
+
+        float z = -0.9f;
+        float xPadding = 0.05f;
+        float yPadding = xPadding/9f*7f;
+        float[] vertices = {
+                0+xPadding, 2f/9f-yPadding, z,  0f,1f,
+                0+xPadding, 0+yPadding, z, 0f,0f,
+                2f/7f-xPadding, 0+yPadding, z,  1f,0f,
+
+                2f/7f-xPadding, 0+yPadding, z,   1f,0f,
+                2f/7f-xPadding, 2f/9f-yPadding, z,     1f,1f,
+                0+xPadding, 2f/9f-yPadding, z,  0f,1f
+        };
+        FloatBuffer verticesBuffer = BufferUtils.createFloatBuffer(vertices.length);
+        verticesBuffer.put(vertices);
+        verticesBuffer.flip();
+
+        vertexCount = 6;
+
+
+
+        VAO = glGenVertexArrays();
+        glBindVertexArray(VAO);
+
+        VBO = glGenBuffers();
+        glBindBuffer(GL_ARRAY_BUFFER, VBO);
+        glBufferData(GL_ARRAY_BUFFER, verticesBuffer, GL_STATIC_DRAW);
+        glVertexAttribPointer(vPos_location, 3, GL_FLOAT, false, SIZE_OF_FLOAT*5, 0);
+        glEnableVertexAttribArray(vPos_location);
+        glVertexAttribPointer(texCoords_location, 2, GL_FLOAT, false, SIZE_OF_FLOAT*5, SIZE_OF_FLOAT*3);
+        glEnableVertexAttribArray(texCoords_location);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+
+        glBindVertexArray(0);
+
+    }
+
+    public void draw(){
+        if(!isKilled){
+            shader.Use();
+            float xShift = 2f*( ( (float) (location.getCol())/ 7f ) - 0.5f );
+            float yShift = 2f*(0.5f-((float) (location.getRow()+1)/9f));
+            glUniform2f(positionShift_location,xShift,yShift);
+            glBindVertexArray(VAO);
+            texture.bind();
+            glDrawArrays(GL_TRIANGLES,0,vertexCount);
+            glBindVertexArray(0);
+        }
+    }
+
+
 }

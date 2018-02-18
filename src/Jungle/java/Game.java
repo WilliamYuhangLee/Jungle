@@ -6,7 +6,8 @@ import java.util.Scanner;
 
 class Game {
 
-    static void launch() {
+    Board board=Board.createBoard();
+    void launch() {
         startUp();
         gameIntro();
         System.out.println("\nPress ENTER key to start the game.");
@@ -16,7 +17,7 @@ class Game {
         startGame();
     }
 
-    private static void startUp() {
+    private  void startUp() {
         System.out.println("===================================");
         System.out.println("||    = =  = =  =  ==  =    ==== ||");
         System.out.println("||    = =  = == = =  = =    =    ||");
@@ -30,7 +31,7 @@ class Game {
         System.out.println();
     }
 
-    private static void gameIntro() {
+    private  void gameIntro() {
         System.out.println("================================================================================");
         System.out.println("                                  Introduction                                  ");
         System.out.println("================================================================================");
@@ -52,7 +53,7 @@ class Game {
         System.out.println(WordUtils.wrap("Finally, animals may not move into their own den (marked with \"O\"). If an enemy animal moves into a player's den, the player loses.", 80));
     }
 
-    private static void printRanking() {
+    private  void printRanking() {
         System.out.println("Rank|Marker|Animal");
         System.out.println("  8   E/e   Elephant");
         System.out.println("  7   L/l   Lion");
@@ -64,11 +65,11 @@ class Game {
         System.out.println("  1   R/r   Rat");
     }
 
-    private static void startGame() {
+    private  void startGame() {
         System.out.println("================================================================================");
         System.out.println("                                  GAME STARTS                                   ");
         System.out.println("================================================================================");
-        Board board = Board.createBoard();
+        //board = Board.createBoard();
         Side playersTurn = Side.RED;
         Scanner sc = new Scanner(System.in);
         while (!Side.RED.isVictorious() && !Side.BLACK.isVictorious()) {
