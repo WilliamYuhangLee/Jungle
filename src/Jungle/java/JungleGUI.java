@@ -25,6 +25,7 @@ public class JungleGUI {
     private double lastX,lastY;
     private boolean firstMouse=true;
     private Square pressingSquare = null;
+    Side thisTurnSide = Side.BLACK;
     Game game;
     private void init() {
         GLFWErrorCallback.createPrint(System.err).set();
@@ -68,6 +69,8 @@ public class JungleGUI {
             }
         });
 
+
+
         glfwSetMouseButtonCallback(window, (window,button,action,mods)->{
             double normalX=normalizeX(lastX);
             double normalY=normalizeY(lastY);
@@ -75,7 +78,7 @@ public class JungleGUI {
                 if(action==GLFW_PRESS){
                     for(Square[] squares:game.board.squares){
                         for(Square square:squares){
-                            if(square.checkPress(normalX,normalY)){
+                            if(square.checkPress(normalX,normalY,thisTurnSide)){
                                 pressingSquare=square;
                                 return;
                             }
@@ -86,7 +89,10 @@ public class JungleGUI {
                     pressingSquare= null;
                     for(Square[] squares:game.board.squares){
                         for(Square square:squares){
-                            square.checkRelease(normalX,normalY);
+                            if(square.checkRelease(normalX,normalY)){
+                                thisTurnSide = thisTurnSide==Side.BLACK?Side.RED:Side.BLACK;
+                                return;
+                            }
                         }
                     }
                 }

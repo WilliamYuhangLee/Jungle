@@ -18,7 +18,7 @@ import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 class Piece {
     private Animal animal;
-    private Side side;
+    public Side side;
     Square location;
     private boolean isKilled = false;
     //static HashMap<String,Texture2D> animalTextures=new HashMap<>();

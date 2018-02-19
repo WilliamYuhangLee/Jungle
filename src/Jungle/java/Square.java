@@ -146,15 +146,20 @@ class Square {
         pressing = checkHit(x,y);
     }
 
-    public boolean checkPress(double x,double y){
-        pressing = checkHit(x,y);
-        return pressing;
+    public boolean checkPress(double x,double y,Side side){
+        if( isTarget|| (piece!=null && piece.side==side )){
+            pressing = checkHit(x,y);
+            return pressing;
+        }
+        else return false;
+
     }
-    public void checkRelease(double x,double y){
+    public boolean checkRelease(double x,double y){
         boolean hit = checkHit(x,y);
         if(hit){
 
         }
+        boolean moved = false;
         if(pressing){
             if(!selected && piece!=null && !isTarget){
                 selected=true;
@@ -173,6 +178,7 @@ class Square {
                     for(Square square:squares){
                         if(square.selected){
                             square.piece.moveTo(this);
+                            moved = true;
                         }
                         square.selected=false;
                         square.isTarget=false;
@@ -181,6 +187,7 @@ class Square {
             }
         }
         pressing = false;
+        return moved;
     }
 
     private static int getCol(double x){
